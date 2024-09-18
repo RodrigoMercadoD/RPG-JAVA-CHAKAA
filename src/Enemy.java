@@ -19,6 +19,4 @@ public class Enemy {
     public void attack(Player player) {
         // Logica de ataqie
     }
-
-    // Otros métodos y lógica específica del enemigo
 }
