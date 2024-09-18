@@ -7,7 +7,5 @@ public class Game {
         Enemy enemy1 = new Enemy("El Bryan");
         enemy1.addStat(Stats.HP, 200);
         enemy1.addStat(Stats.DEFENSE, 15);
-
-        // Aquí puedes agregar más estadísticas y lógica de juego
     }
 }
