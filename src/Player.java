@@ -20,5 +20,8 @@ public class Player {
         // Logica de ataqie
     }
 
-    // Otros métodos y lógica específica del jugador
+    public String getName() {
+        return name;
+    }
+
 }

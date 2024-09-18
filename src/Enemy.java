@@ -20,5 +20,4 @@ public class Enemy {
         // Logica de ataqie
     }
 
-    // Otros métodos y lógica específica del enemigo
 }
