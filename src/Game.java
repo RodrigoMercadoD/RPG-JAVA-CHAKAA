@@ -9,3 +9,14 @@ public class Game {
         enemy1.addStat(Stats.DEFENSE, 15);
     }
 }
+ public void startGame() {
+        while (player1.isAlive() && enemy1.isAlive()) {
+            player1.attack(enemy1);
+            if (enemy1.isAlive()) {
+                enemy1.attack(player1);       
+            }
+            if (player1.isAlive())&& enemy1.isDead()) {
+            System.out.println("Derrotaste al malvado!");
+        } else {
+            System.out.println("Fallaste, te han chakaleado.");
+        }
