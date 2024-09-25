@@ -1,61 +1,41 @@
-import javax.swing.JOptionPane;
+package rpg.entities;
 
-/**
- * La clase Game representa la partida de juego..
- */
+import rpg.entities.enemies.Enemy;
+import rpg.entities.enemies.goblins.BrayanTepito;
+import rpg.utils.Randomize;
+
 public class Game {
-    private Player player; // Jugador que controla el usuario
-    private Enemy enemy;   // Enemigo contra el cual combate el jugador
 
-    /**
-     * Constructor de la clase Game comienza el juego pidiendo el nombre del jugador a través de una ventana emergente.
-     * Si el usuario no ingresa un nombre, se le asigna "Player"
-     */
-    public Game() {
-        // Solicita el nombre del jugador
-        String playerName = JOptionPane.showInputDialog("'¿Cuál es tu nombre?'");
+    private Player player;
+    private Enemy enemy;
 
-        // Crea un nuevo jugador con el nombre proporcionado o un nombre por defectoe en caso no le sea otorgado uno
-        this.player = new Player(playerName != null && !playerName.isEmpty() ? playerName : "Player");
-
-        // Crea un enemigo llamado El Brayan
-        this.enemy = new Enemy("El Brayan");
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.startGame();
     }
 
-    /**
-     * Inicia la partida entre el jugador y el enemigo.
-     * Los turnos se alternan entre el jugador y el enemigo, atacándose entre sí.
-     * El juego termina cuando uno de los dos muere.
-     */
-    public void startGame() {
-        // El juego continuaa mientras los dos sigan vivos
-        while (player.isAlive() && enemy.isAlive()) {
-            // El jugador ataca primero al enemigo
-            player.attack(enemy);
+    public Game() {
+        this.player = new Player("Player");
+        int enemyType = Randomize.getRandomInt(1, 3);
+        this.enemy = switch (enemyType) {
+            case 1 -> new BrayanTepito();
+            case 2 -> new rpg.entities.enemies.slimes.IkerTepito();
+            default -> new Enemy();
+        };
+    }
 
-            // Si el enemigo sigue vivo, contraataca
+    public void startGame() {
+        while (player.isAlive() && enemy.isAlive()) {
+            player.attack(enemy);
             if (enemy.isAlive()) {
                 enemy.attack(player);
             }
-
-            // Imprime los puntos de vida actuales del jugador y el enemigo
-            System.out.println("Tu HP es de " + player.getStats().get(Stats.HP));
-            System.out.println("HP del Brayan es de " + enemy.getStats().get(Stats.HP));
-            System.out.println(); // Agrega una línea en blanco para mayor legibilidad y no se amontone todo
         }
-        // Mensaje final según quién haya ganado
-        if (player.isAlive()) {
-            System.out.println("Derrotaste al malvado!"+ "\nFelicidades");
-        } else {
-            System.out.println("Fallaste, te han chakaleado.");}}
 
-    /**
-     * Método principal que ejecuta el juego.
-     * @param args Argumentos de la línea de comandos (no utilizados).
-     */
-    public static void main(String[] args) {
-        // Crea una nueva instancia del juego e inicia
-        Game game = new Game();
-        game.startGame();
+        if (player.isAlive()) {
+            System.out.println(player.getName() + " wins!");
+        } else {
+            System.out.println(enemy.getName() + " wins!");
+        }
     }
 }
