@@ -46,7 +46,7 @@ public class GameCharacter {
     }
 
     public String getName() {
-        return String.format("%s el Intrépido", name);
+        return String.format("%s el Intrepido", name);
     }
 
     public HashMap<Stats, Integer> getStats() {

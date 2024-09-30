@@ -1,4 +1,4 @@
-package rpg.entities.enemies.slimes;
+package rpg.entities.enemies.Iker;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;

@@ -1,7 +1,11 @@
 package rpg.entities;
 
 import rpg.entities.enemies.Enemy;
-import rpg.entities.enemies.goblins.BrayanTepito;
+import rpg.entities.enemies.Brayan.BrayanTepito;
+import rpg.entities.enemies.Iker.IkerTepito;
+import rpg.entities.enemies.Luiyi.LuiyiTepito;
+import rpg.entities.enemies.Policia.PoliciaTepito;
+
 import rpg.utils.Randomize;
 
 public class Game {
@@ -19,7 +23,7 @@ public class Game {
         int enemyType = Randomize.getRandomInt(1, 3);
         this.enemy = switch (enemyType) {
             case 1 -> new BrayanTepito();
-            case 2 -> new rpg.entities.enemies.slimes.IkerTepito();
+            case 2 -> new IkerTepito();
             default -> new Enemy();
         };
     }
