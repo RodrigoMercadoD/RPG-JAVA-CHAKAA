@@ -26,7 +26,7 @@ public class KevinTepito extends Enemy {
                 fireBalls(enemy);
                 break;
             default:
-                great.attack(enemy);
+                super.attack(enemy);
                 break;
         }
     }
