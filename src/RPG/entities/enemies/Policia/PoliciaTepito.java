@@ -7,7 +7,7 @@ import rpg.enums.Stats;
 
 public class PoliciaTepito extends Enemy {
 
-    public IkerTepito() {
+    public PoliciaTepito() {
         super();
         this.name = "Policia de Tepito";
         this.stats.put(Stats.MAX_HP, 10);
