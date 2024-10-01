@@ -7,7 +7,7 @@ import rpg.utils.Randomize;
 
 public class KevinTepito extends Enemy {
    public BrayanTepito() {
-        super("Brayan Tepito");
+        super("kevinTepito");
         this.name = "Brayan de Tepito";
         this.stats.put(Stats.MAX_HP, 35);
         this.stats.put(Stats.HP, 35);
@@ -26,7 +26,7 @@ public class KevinTepito extends Enemy {
                 fireBalls(enemy);
                 break;
             default:
-                super.attack(enemy);
+                great.attack(enemy);
                 break;
         }
     }
