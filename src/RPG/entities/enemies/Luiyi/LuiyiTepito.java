@@ -15,7 +15,7 @@ public class LuiyiTepito extends Enemy {
         this.stats.put(Stats.DEFENSE, 8);
     }
 
-    protected void splash(GameCharacter enemy) {
+    protected void acidRain(GameCharacter enemy) {
 
         System.out.println(this.name + " splashes " + enemy.getName() + " and does nothing.");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
