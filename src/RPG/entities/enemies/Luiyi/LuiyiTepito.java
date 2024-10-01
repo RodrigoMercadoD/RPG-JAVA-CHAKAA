@@ -21,7 +21,7 @@ public class LuiyiTepito extends Enemy {
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void trhowSlime(GameCharacter enemy) {
+    protected void sharpSpikes(GameCharacter enemy) {
 
         int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
