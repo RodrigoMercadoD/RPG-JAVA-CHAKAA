@@ -30,7 +30,7 @@ public class KevinTepito extends Enemy {
                 break;
         }
     }
-    protected void throwKnifire(GameCharacter enemy) {
+    protected void throwKnife(GameCharacter enemy) {
         int damage = 2;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
         System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
