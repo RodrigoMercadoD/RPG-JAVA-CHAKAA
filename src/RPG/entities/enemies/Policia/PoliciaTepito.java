@@ -33,9 +33,9 @@ public class PoliciaTepito extends Enemy {
     @Override
     public void attack(GameCharacter enemy) {
         if (Math.random() < 0.5) {
-            splash(enemy);
+            fireRain(enemy);
         } else {
-            trhowSlime(enemy);
+            flyingKnives(enemy);
         }
     }
 }
