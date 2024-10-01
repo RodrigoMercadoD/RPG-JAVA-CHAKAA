@@ -1,4 +1,4 @@
-package rpg.entities.enemies.goblins;
+package rpg.entities.enemies.Brayan;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
@@ -8,7 +8,7 @@ import rpg.utils.Randomize;
 public class BrayanTepito extends Enemy {
 
     public BrayanTepito() {
-        super();
+        super("Brayan Tepito");
         this.name = "Brayan de Tepito";
         this.stats.put(Stats.MAX_HP, 35);
         this.stats.put(Stats.HP, 35);

@@ -1,6 +1,9 @@
+package rpg.entities;
+
 import java.util.HashMap;
 import java.util.Random;
-
+import rpg.enums.Stats;
+import rpg.entities.enemies.Enemy;
 /**
  * Iniciamos una clase Player con un nombre, estadisticas y un numero aleatorio para su ataque varie
  */

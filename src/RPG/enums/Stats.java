@@ -1,3 +1,5 @@
+package rpg.enums;
+
 public enum Stats {
     HP,
     MAX_HP,

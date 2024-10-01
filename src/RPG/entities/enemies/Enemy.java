@@ -1,3 +1,8 @@
+package rpg.entities.enemies;
+
+import rpg.entities.Player;
+import rpg.enums.Stats;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -5,9 +10,9 @@ import java.util.Random;
  * La clase Enemy representa a un enemigo en el juego.
  */
 public class Enemy {
-    private String name; // Nombre del enemigo
-    private HashMap<Stats, Integer> stats; // Mapa que contiene las estadísticas del enemigo (HP, ataque, defensa)
-    private Random random; // Número aleatorio usado para variar el daño de ataque
+    public String name; // Nombre del enemigo
+    public HashMap<Stats, Integer> stats; // Mapa que contiene las estadísticas del enemigo (HP, ataque, defensa)
+    public Random random; // Número aleatorio usado para variar el daño de ataque
 
     /**
      * Constructor de la clase Enemy.

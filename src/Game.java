@@ -1,8 +1,8 @@
-package rpg.entities;
-
+import rpg.entities.Player;
 import rpg.entities.enemies.Enemy;
 import rpg.entities.enemies.Brayan.BrayanTepito;
 import rpg.entities.enemies.Iker.IkerTepito;
+import rpg.entities.enemies.Kevin.KevinTepito;
 import rpg.entities.enemies.Luiyi.LuiyiTepito;
 import rpg.entities.enemies.Policia.PoliciaTepito;
 
@@ -24,6 +24,8 @@ public class Game {
         this.enemy = switch (enemyType) {
             case 1 -> new BrayanTepito();
             case 2 -> new IkerTepito();
+            case 3 -> new KevinTepito();
+            case 4 -> new LuiyiTepito();
             default -> new Enemy();
         };
     }
