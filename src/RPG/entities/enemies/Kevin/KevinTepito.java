@@ -8,11 +8,11 @@ import rpg.utils.Randomize;
 public class KevinTepito extends Enemy {
    public BrayanTepito() {
         super("kevinTepito");
-        this.name = "Brayan de Tepito";
-        this.stats.put(Stats.MAX_HP, 35);
-        this.stats.put(Stats.HP, 35);
-        this.stats.put(Stats.ATTACK, 6);
-        this.stats.put(Stats.DEFENSE, 2);
+        this.name = "Kevin de Tepito";
+        this.stats.put(Stats.MAX_HP, 25);
+        this.stats.put(Stats.HP, 25);
+        this.stats.put(Stats.ATTACK, 8);
+        this.stats.put(Stats.DEFENSE, 3);
     }
 
     @Override
@@ -29,6 +29,20 @@ public class KevinTepito extends Enemy {
                 super.attack(enemy);
                 break;
         }
+    }
+    protected void throwKnifire(GameCharacter enemy) {
+        int damage = 2;
+        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
+        System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
+                + damage + " damage!");
+        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+    }
+
+    protected void fireBalls(GameCharacter enemy) {
+        int damage = 3;
+        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
+        System.out.println(this.name + " bites " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
   
   
