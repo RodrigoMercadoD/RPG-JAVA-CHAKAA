@@ -20,10 +20,10 @@ public class KevinTepito extends Enemy {
         int attack = Randomize.getRandomInt(1, 3);
         switch (attack) {
             case 1:
-                throwRock(enemy);
+                throwKnife(enemy);
                 break;
             case 2:
-                savageBite(enemy);
+                fireBalls(enemy);
                 break;
             default:
                 super.attack(enemy);
