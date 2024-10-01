@@ -32,9 +32,9 @@ public class LuiyiTepito extends Enemy {
     @Override
     public void attack(GameCharacter enemy) {
         if (Math.random() < 0.5) {
-            splash(enemy);
+            acidRain(enemy);
         } else {
-            trhowSlime(enemy);
+            sharpSpikes(enemy);
         }
     }
 }
