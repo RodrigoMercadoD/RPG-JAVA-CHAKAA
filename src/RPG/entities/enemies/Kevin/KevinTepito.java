@@ -20,28 +20,28 @@ public class KevinTepito extends Enemy {
         int attack = Randomize.getRandomInt(1, 3);
         switch (attack) {
             case 1:
-                throwKnife(enemy);
+                AsaltoComb(enemy);
                 break;
             case 2:
-                fireBalls(enemy);
+                Cigarro(enemy);
                 break;
             default:
                 super.attack(enemy);
                 break;
         }
     }
-    protected void throwKnife(GameCharacter enemy) {
+    protected void AsaltoComb(GameCharacter enemy) {
         int damage = 2;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
+        System.out.println(this.name + " te da un susto en la combi " + enemy.getName() + " y te quita 20 varos "
                 + damage + " damage!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void fireBalls(GameCharacter enemy) {
+    protected void Cigarro(GameCharacter enemy) {
         int damage = 3;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " bites " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(this.name + " Prende su cigarro " + enemy.getName() + " pierde el encendedor " + damage + " y te quema el brazo!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
   
