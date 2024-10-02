@@ -15,26 +15,26 @@ public class LuiyiTepito extends Enemy {
         this.stats.put(Stats.DEFENSE, 8);
     }
 
-    protected void acidRain(GameCharacter enemy) {
+    protected void Perreke(GameCharacter enemy) {
 
-        System.out.println(this.name + " splashes " + enemy.getName() + " and does nothing.");
+        System.out.println(this.name + " Baja hasta el suelo " + enemy.getName() + " y quedas con el ojo cuadrado.");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void sharpSpikes(GameCharacter enemy) {
+    protected void Nachos(GameCharacter enemy) {
 
         int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws slime at " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(this.name + " pide unos nachos con queso caliente " + enemy.getName() + " te quema " + damage + " y tienes chile en el ojo!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
     @Override
     public void attack(GameCharacter enemy) {
         if (Math.random() < 0.5) {
-            acidRain(enemy);
+            Perreke(enemy);
         } else {
-            sharpSpikes(enemy);
+            Nachos(enemy);
         }
     }
 }
