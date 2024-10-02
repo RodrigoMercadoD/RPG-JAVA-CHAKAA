@@ -21,10 +21,10 @@ public class BrayanTepito extends Enemy {
         int attack = Randomize.getRandomInt(1, 3);
         switch (attack) {
             case 1:
-                throwRock(enemy);
+                DesconectedePeda(enemy);
                 break;
             case 2:
-                savageBite(enemy);
+                GuardameelFilero(enemy);
                 break;
             default:
                 super.attack(enemy);
@@ -32,18 +32,18 @@ public class BrayanTepito extends Enemy {
         }
     }
 
-    protected void throwRock(GameCharacter enemy) {
+    protected void DesconectedePeda(GameCharacter enemy) {
         int damage = 2;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
-                + damage + " damage!");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+        System.out.println(this.name + " Se desconecta contra ti " + enemy.getName() + " con "
+                + damage + " de daño!");
+        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void savageBite(GameCharacter enemy) {
+    protected void GuardameelFilero(GameCharacter enemy) {
         int damage = 3;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " bites " + enemy.getName() + " for " + damage + " damage!");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+        System.out.println(this.name + " Te arroja el filero " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
     }
 }

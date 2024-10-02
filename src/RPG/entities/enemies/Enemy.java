@@ -1,5 +1,6 @@
 package rpg.entities.enemies;
 
+import rpg.entities.GameCharacter;
 import rpg.entities.Player;
 import rpg.enums.Stats;
 
@@ -36,7 +37,7 @@ public class Enemy {
      * El daño total es la suma del ataque del enemigo y un valor aleatorio, menos la defensa del jugador.
      * Si el daño es positivo, se resta a los puntos de vida del jugador, de lo contrario, no se hace daño.
      */
-    public void attack(Player player) {
+    public void attack(GameCharacter player) {
         // Genera un número aleatorio entre 1 y 5 para varear el daño
         int randomDamage = random.nextInt(5) + 1; // Número aleatorio entre 1 y 5
         // Calcula el daño final ataque del enemigo + daño aleatorio - defensa del jugador

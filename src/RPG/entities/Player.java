@@ -7,13 +7,13 @@ import rpg.entities.enemies.Enemy;
 /**
  * Iniciamos una clase Player con un nombre, estadisticas y un numero aleatorio para su ataque varie
  */
-public class Player {
+public class Player extends GameCharacter{
     private String name;
     private HashMap<Stats, Integer> stats;
     private Random random;
 
     public Player(String name) {
-        this.name = name;
+        super("Jugador");
         this.stats = new HashMap<>(); //incluye estadisticas por defecto del mapa
         this.stats.put(Stats.MAX_HP, 98); //vida maxima
         this.stats.put(Stats.HP, 98); //vida
@@ -21,7 +21,8 @@ public class Player {
         this.stats.put(Stats.MP, 50); //magia
         this.stats.put(Stats.ATTACK, 10); //ataque
         this.stats.put(Stats.DEFENSE, 5); //defensa
-        this.random = new Random(); //declaracion para usar el numero random del ataque
+        this.random = new Random();
+        this.name = name;
     }
 
     /**
