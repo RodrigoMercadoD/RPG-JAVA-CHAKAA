@@ -8,7 +8,7 @@ public class LuiyiTepito extends Enemy {
 
     public LuiyiTepito() {
         super();
-        this.name = "Luiyi de Tepito";
+        this.name = "Luiyi Bellako";
         this.stats.put(Stats.MAX_HP, 60);
         this.stats.put(Stats.HP, 60);
         this.stats.put(Stats.ATTACK, 9);
