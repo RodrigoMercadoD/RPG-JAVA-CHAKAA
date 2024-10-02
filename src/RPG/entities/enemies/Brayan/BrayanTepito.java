@@ -35,7 +35,7 @@ public class BrayanTepito extends Enemy {
     protected void DesconectedePeda(GameCharacter enemy) {
         int damage = 2;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
+        System.out.println(this.name + " Se desconecta contra ti " + enemy.getName() + " for "
                 + damage + " damage!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
@@ -43,7 +43,7 @@ public class BrayanTepito extends Enemy {
     protected void GuardameelFilero(GameCharacter enemy) {
         int damage = 3;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " bites " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(this.name + " Te arroja el filero " + enemy.getName() + " for " + damage + " damage!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 }
