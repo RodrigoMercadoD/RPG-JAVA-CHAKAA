@@ -16,26 +16,26 @@ public class PoliciaTepito extends Enemy {
         this.stats.put(Stats.DEFENSE, 2);
     }
 
-    protected void fireRain(GameCharacter enemy) {
+    protected void XesoJov(GameCharacter enemy) {
 
-        System.out.println(this.name + " splashes " + enemy.getName() + " and does nothing.");
+        System.out.println(this.name + " te para en la esquina " + enemy.getName() + " pero no traes nada y te deja.");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void flyingKnives(GameCharacter enemy) {
+    protected void Mordida(GameCharacter enemy) {
 
         int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws slime at " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(this.name + " Te pide que le des pa la coca " + enemy.getName() + " no le das nada " + damage + " y te mete al bote!");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
     @Override
     public void attack(GameCharacter enemy) {
         if (Math.random() < 0.5) {
-            fireRain(enemy);
+            XesoJov(enemy);
         } else {
-            flyingKnives(enemy);
+            Mordida(enemy);
         }
     }
 }
