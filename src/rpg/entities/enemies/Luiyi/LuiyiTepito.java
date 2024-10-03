@@ -3,8 +3,7 @@ import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
 import rpg.enums.Stats;
 import rpg.utils.Randomize;
-{{{}}}
-<<<<<<< HEAD
+
 public class LuiyiTepito extends Enemy {
     /**
      * Constructor de la clase Enemy.
@@ -14,17 +13,6 @@ public class LuiyiTepito extends Enemy {
     public LuiyiTepito(String name) {
         super("Luiyi de tepito");
         this.name = "Luiyi de Tepito";
-=======
-import rpg.entities.GameCharacter;
-import rpg.entities.enemies.Enemy;
-import rpg.enums.Stats;
-
-public class LuiyiTepito extends Enemy {
-
-    public LuiyiTepito() {
-        super();
-        this.name = "Luiyi Bellako";
->>>>>>> origin/master
         this.stats.put(Stats.MAX_HP, 60);
         this.stats.put(Stats.HP, 60);
         this.stats.put(Stats.ATTACK, 9);
@@ -53,8 +41,4 @@ public class LuiyiTepito extends Enemy {
             Nachos(enemy);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
