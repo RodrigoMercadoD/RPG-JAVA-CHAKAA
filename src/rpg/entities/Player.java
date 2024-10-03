@@ -7,7 +7,7 @@ import rpg.entities.enemies.Enemy;
 /**
  * Iniciamos una clase Player con un nombre, estadisticas y un numero aleatorio para su ataque varie
  */
-public class Player extends GameCharacter{
+public class Player extends GameCharacter {
     private String name;
     private HashMap<Stats, Integer> stats;
     private Random random;

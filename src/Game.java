@@ -12,7 +12,7 @@ import rpg.utils.Randomize;
 import javax.xml.namespace.QName;
 
 /**
- * La clase Game representa el flujo principal de un juego RPG.
+ * La clase Game representa el flujo principal de un juego rpg.
  * En esta clase se define al jugador y al enemigo, y se maneja la pelea entre ellos.
  */
 public class Game {
