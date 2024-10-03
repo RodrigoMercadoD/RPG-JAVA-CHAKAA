@@ -8,16 +8,12 @@ import rpg.enums.Stats;
 public class PoliciaTepito extends Enemy {
 
     public PoliciaTepito() {
-<<<<<<< HEAD
         super("Policia de Tepito");
-=======
-        super();
->>>>>>> origin/master
         this.name = "Policia de Tepito";
         this.stats.put(Stats.MAX_HP, 10);
         this.stats.put(Stats.HP, 10);
         this.stats.put(Stats.ATTACK, 5);
-        this.stats.put(Stats.DEFENSE, 2);ñññ
+        this.stats.put(Stats.DEFENSE, 2);
     }
 
     protected void XesoJov(GameCharacter enemy) {
@@ -31,11 +27,7 @@ public class PoliciaTepito extends Enemy {
         int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
         System.out.println(this.name + " Te pide que le des pa la coca " + enemy.getName() + " no le das nada " + damage + " y te mete al bote!");
-<<<<<<< HEAD
         System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
-=======
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
->>>>>>> origin/master
     }
 
     @Override
@@ -46,8 +38,4 @@ public class PoliciaTepito extends Enemy {
             Mordida(enemy);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
