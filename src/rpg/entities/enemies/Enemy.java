@@ -37,7 +37,7 @@ public class Enemy {
      * El daño total es la suma del ataque del enemigo y un valor aleatorio, menos la defensa del jugador.
      * Si el daño es positivo, se resta a los puntos de vida del jugador, de lo contrario, no se hace daño.
      */
-    public void attack(GameCharacter player) {
+    public void attack(Player player) {
         // Genera un número aleatorio entre 1 y 5 para varear el daño
         int randomDamage = random.nextInt(5) + 1; // Número aleatorio entre 1 y 5
         // Calcula el daño final ataque del enemigo + daño aleatorio - defensa del jugador
@@ -55,6 +55,10 @@ public class Enemy {
         }
     }
 
+    public void attack(GameCharacter target) {
+        // lógica de ataque que funciona tanto para Player como para Enemy
+    }
+
     public boolean isAlive() {
         return this.stats.get(Stats.HP) > 0; // Devuelve si el HP del enemigo es mayor a 0
     }
@@ -67,4 +71,5 @@ public class Enemy {
         return stats; // Devuelve el mapa que contiene las estadísticas del enemigo
     }
 }
+
 
