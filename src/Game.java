@@ -37,7 +37,7 @@ public class Game {
      */
     public Game() {
         this.player = new Player("Jugador"); // Crea un jugador llamado "Jugador"
-        int enemyType = Randomize.getRandomInt(1, 3); // Genera un tipo de enemigo aleatorio
+        int enemyType = Randomize.getRandomInt(1, 5); // Genera un tipo de enemigo aleatorio
 
         // Selección del enemigo basado en un número aleatorio
         this.enemy = switch (enemyType) {
