@@ -37,13 +37,13 @@ public class BrayanTepito extends Enemy {
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
         System.out.println(this.name + " Se desconecta contra ti " + enemy.getName() + " con "
                 + damage + " de daño!");
-        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP left.");
+        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
     }
 
     protected void GuardameelFilero(GameCharacter enemy) {
         int damage = 3;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " Te arroja el filero " + enemy.getName() + " for " + damage + " damage!");
+        System.out.println(this.name + " Te arroja el filero " + enemy.getName() + " y hace " + damage + " de daño!");
         System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
     }
 }
