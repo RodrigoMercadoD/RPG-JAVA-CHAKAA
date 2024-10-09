@@ -17,10 +17,10 @@ public class IkerTepito extends Enemy {
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 10);
-        this.stats.put(Stats.DEFENSE, 7);
+        this.stats.put(Stats.MAX_HP, 27);
+        this.stats.put(Stats.HP, 25);
+        this.stats.put(Stats.ATTACK, 8);
+        this.stats.put(Stats.DEFENSE, 5);
     }
     protected void Michelada(GameCharacter enemy) {
 
