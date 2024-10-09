@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Clase base para todos los personajes
  * Los personajes pueden ser jugadores o enemigos
  */
-public class GameCharacter {
+public abstract class GameCharacter {
 
     /** El nombre del personaje */
     protected String name;
@@ -22,8 +22,11 @@ public class GameCharacter {
      */
     public GameCharacter(String name) {
         this.name = name;
-        this.stats = new HashMap<>(); // Inicializa las estadísticas del personaje
+        this.stats = new HashMap<>();// Inicializa las estadísticas del personaje
+        initCharacter();
     }
+
+    protected abstract void initCharacter();
 
     /**
      * Método para verificar si el personaje sigue vivo.
@@ -41,7 +44,7 @@ public class GameCharacter {
      */
     public void attack(GameCharacter enemy) {
 
-        String message = ""; // Mensaje de resultado del ataque
+        String message = "Nuevo enemigo"; // Mensaje de resultado del ataque
         String enemyName = enemy.getName(); // Nombre del enemigo
         int damage = this.stats.get(Stats.ATTACK) - enemy.getStats().get(Stats.DEFENSE); // Cálculo del daño
 

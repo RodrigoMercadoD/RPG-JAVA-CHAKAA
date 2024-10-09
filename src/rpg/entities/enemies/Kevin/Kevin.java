@@ -2,6 +2,7 @@ package rpg.entities.enemies.Kevin;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 /**
@@ -14,12 +15,20 @@ public class Kevin extends Enemy {
      */
     public Kevin() {
         super("Kevin");
-        this.stats.put(Stats.MAX_HP, 30); // Vida máxima de Kevin
-        this.stats.put(Stats.HP, 30); // Vida actual de Kevin
-        this.stats.put(Stats.ATTACK, 7); // Ataque de Kevin
-        this.stats.put(Stats.DEFENSE, 4); // Defensa de Kevin
     }
 
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     /**
      * Método que realiza el ataque 'Lanzamiento de Piedra' de Kevin.
      *

@@ -2,6 +2,7 @@ package rpg.entities.enemies.Kevin;
 import rpg.entities.enemies.Enemy;
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 import rpg.utils.Randomize;
 
@@ -14,12 +15,20 @@ public class KevinTepito extends Enemy {
     public KevinTepito(String name) {
         super(name);
         this.name = "Kevin de Tepito";
-        this.stats.put(Stats.MAX_HP, 25);
-        this.stats.put(Stats.HP, 25);
-        this.stats.put(Stats.ATTACK, 8);
-        this.stats.put(Stats.DEFENSE, 3);
     }
 
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     @Override
     public void attack(GameCharacter enemy) {
         int attack = Randomize.getRandomInt(1, 3);

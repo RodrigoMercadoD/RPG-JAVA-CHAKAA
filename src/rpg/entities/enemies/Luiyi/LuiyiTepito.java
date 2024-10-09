@@ -1,6 +1,7 @@
 package rpg.entities.enemies.Luiyi;
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 import rpg.utils.Randomize;
 
@@ -12,11 +13,18 @@ public class LuiyiTepito extends Enemy {
      */
     public LuiyiTepito(String name) {
         super("Luiyi de tepito");
-        this.name = "Luiyi de Tepito";
-        this.stats.put(Stats.MAX_HP, 60);
-        this.stats.put(Stats.HP, 60);
-        this.stats.put(Stats.ATTACK, 9);
-        this.stats.put(Stats.DEFENSE, 8);
+    }
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
     }
 
     protected void Perreke(GameCharacter enemy) {

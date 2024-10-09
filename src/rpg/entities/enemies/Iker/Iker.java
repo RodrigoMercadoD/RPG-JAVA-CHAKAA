@@ -2,6 +2,7 @@ package rpg.entities.enemies.Iker;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 /**
@@ -14,12 +15,20 @@ public class Iker extends Enemy {
      */
     public Iker() {
         super("Iker");
-        this.stats.put(Stats.MAX_HP, 40); // Vida máxima de Iker
-        this.stats.put(Stats.HP, 40); // Vida actual de Iker
-        this.stats.put(Stats.ATTACK, 8); // Ataque de Iker
-        this.stats.put(Stats.DEFENSE, 5); // Defensa de Iker
     }
 
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     /**
      * Método que realiza el ataque 'Lanzamiento de Botella' de Iker.
      *

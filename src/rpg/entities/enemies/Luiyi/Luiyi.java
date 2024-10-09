@@ -2,6 +2,7 @@ package rpg.entities.enemies.Luiyi;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 /**
@@ -14,12 +15,20 @@ public class Luiyi extends Enemy {
      */
     public Luiyi() {
         super("Luiyi");
-        this.stats.put(Stats.MAX_HP, 50); // Vida máxima de Luiyi
-        this.stats.put(Stats.HP, 50); // Vida actual de Luiyi
-        this.stats.put(Stats.ATTACK, 7); // Ataque de Luiyi
-        this.stats.put(Stats.DEFENSE, 6); // Defensa de Luiyi
     }
 
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     /**
      * Método que realiza el ataque 'Golpe Callejero' de Luiyi.
      *

@@ -2,22 +2,29 @@ package rpg.entities.enemies.Iker;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 public class IkerTepito extends Enemy {
 
     public IkerTepito() {
         super("Iker de Tepito");
-        this.name = "Iker de Tepito";
-        this.stats.put(Stats.MAX_HP, 30);
-        this.stats.put(Stats.HP, 30);
-        this.stats.put(Stats.ATTACK, 10);
-        this.stats.put(Stats.DEFENSE, 4);
     }
-
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     protected void Michelada(GameCharacter enemy) {
 
-        System.out.println(this.name + " Avieinta su miche " + enemy.getName() + " pero no le atina.");
+        System.out.println(this.name + " Avienta su miche " + enemy.getName() + " pero no le atina.");
         System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
     }
 

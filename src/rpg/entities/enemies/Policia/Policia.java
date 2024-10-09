@@ -2,6 +2,7 @@ package rpg.entities.enemies.Policia;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 /**
@@ -13,15 +14,25 @@ public class Policia extends Enemy {
      * Constructor de la clase Policía.
      */
     public Policia() {
+
         super("Policía");
-        this.stats.put(Stats.MAX_HP, 20); // Vida máxima del Policía
-        this.stats.put(Stats.HP, 20); // Vida actual del Policía
-        this.stats.put(Stats.ATTACK, 6); // Ataque del Policía
-        this.stats.put(Stats.DEFENSE, 3); // Defensa del Policía
+
+    }
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 6);
+        this.stats.put(Stats.DEFENSE, 3);
     }
 
     /**
-     * Método que realiza el ataque 'Detención Rápida' del Policía.
+     * Función que realiza el ataque 'Detención Rápida' del Policía.
      *
      * @param enemy El personaje enemigo que recibirá el ataque.
      */
@@ -37,7 +48,7 @@ public class Policia extends Enemy {
      *
      * @param enemy El personaje enemigo que recibirá el ataque.
      */
-    protected void PorEsoJoven(GameCharacter enemy) {
+    protected void porEsoJoven(GameCharacter enemy) {
         int damage = 4;
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage); // Aplica el daño al enemigo
         System.out.println(this.name + " emite un por eso joven " + enemy.getName() + " causando " + damage + " de daño.");
@@ -52,7 +63,7 @@ public class Policia extends Enemy {
         if (Math.random() < 0.5) {
             amonestacion(enemy); // 50% de probabilidad de usar Detención Rápida
         } else {
-            PorEsoJoven(enemy); // 50% de probabilidad de usar Citación
+            porEsoJoven(enemy); // 50% de probabilidad de usar Citación
         }
     }
 }

@@ -2,6 +2,7 @@ package rpg.entities.enemies.Brayan;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
 /**
@@ -20,6 +21,18 @@ public class Brayan extends Enemy {
         this.stats.put(Stats.DEFENSE, 3); // Defensa de Brayan
     }
 
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    @Override
+    protected void initCharacter() {
+        this.type = EnemyType.BASIC;
+        this.stats.put(Stats.MAX_HP, 20);
+        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.ATTACK, 4);
+        this.stats.put(Stats.DEFENSE, 1);
+    }
     /**
      * Método que realiza el ataque 'Golpe Rápido' de Brayan.
      *

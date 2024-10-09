@@ -3,26 +3,32 @@ package rpg.entities.enemies.Policia;
 
 import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
+import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
-public class PoliciaTepito extends Enemy {
+public class PoliciaTepito extends Policia {
 
     public PoliciaTepito() {
-        super("Policia de Tepito");
+        super();
         this.name = "Policia de Tepito";
         this.stats.put(Stats.MAX_HP, 10);
         this.stats.put(Stats.HP, 10);
-        this.stats.put(Stats.ATTACK, 5);
-        this.stats.put(Stats.DEFENSE, 2);
+        this.stats.put(Stats.ATTACK, 8);
+        this.stats.put(Stats.DEFENSE, 10);
+        this.type = EnemyType.ADVANCE;
     }
 
-    protected void XesoJov(GameCharacter enemy) {
+    @Override
+    public String getLoot(){
+        return "Policia solto 5 umas";
+    }
+    protected void xEsoJov(GameCharacter enemy) {
 
         System.out.println(this.name + " te para en la esquina " + enemy.getName() + " pero no traes nada y te deja.");
         System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
     }
 
-    protected void Mordida(GameCharacter enemy) {
+    protected void mordida(GameCharacter enemy) {
 
         int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
         enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
@@ -33,9 +39,9 @@ public class PoliciaTepito extends Enemy {
     @Override
     public void attack(GameCharacter enemy) {
         if (Math.random() < 0.5) {
-            XesoJov(enemy);
+            xEsoJov(enemy);
         } else {
-            Mordida(enemy);
+            mordida(enemy);
         }
     }
 }

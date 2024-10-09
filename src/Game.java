@@ -45,8 +45,7 @@ public class Game {
             case 2 -> new IkerTepito();
             case 3 -> new KevinTepito("Kevin de Tepito");
             case 4 -> new LuiyiTepito("Luiyi de Tepito");
-            case 5 -> new PoliciaTepito();
-            default -> new Enemy("Enemigo");
+            default -> new PoliciaTepito();
         };
     }
 
@@ -66,8 +65,9 @@ public class Game {
         // Eleccion para determinar quien gana segun quien sigue vivo
         if (player.isAlive()) {
             System.out.println(player.getName() + " gana!"); // El jugador gana
+            System.out.println(enemy.getLoot() + "y ha sido obtenido");
         } else {
-            System.out.println(enemy.getName() + " gana!"); // El enemigo gana
+            System.out.println(enemy.getName() + " gana!");// El enemigo gana
         }
     }
 }
