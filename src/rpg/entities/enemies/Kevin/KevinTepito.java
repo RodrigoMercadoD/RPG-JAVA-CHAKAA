@@ -19,7 +19,7 @@ public class KevinTepito extends Enemy {
 
     @Override
     public String getLoot(){
-        return "kevin sonto golpe de marea";
+        return "kevin solto golpe de marea";
     }
     @Override
     protected void initCharacter() {
