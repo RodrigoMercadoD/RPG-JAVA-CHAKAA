@@ -20,15 +20,15 @@ public class Policia extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Policia solto 5 medallas";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
+        this.stats.put(Stats.MAX_HP, 28);
+        this.stats.put(Stats.HP, 26);
         this.stats.put(Stats.ATTACK, 6);
-        this.stats.put(Stats.DEFENSE, 3);
+        this.stats.put(Stats.DEFENSE, 4);
     }
 
     /**
