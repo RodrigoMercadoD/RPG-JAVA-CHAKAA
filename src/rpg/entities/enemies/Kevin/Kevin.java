@@ -26,7 +26,7 @@ public class Kevin extends Enemy {
         this.type = EnemyType.BASIC;
         this.stats.put(Stats.MAX_HP, 26);
         this.stats.put(Stats.HP, 24);
-        this.stats.put(Stats.ATTACK, 15);
+        this.stats.put(Stats.ATTACK, 6);
         this.stats.put(Stats.DEFENSE, 4);
     }
     /**
