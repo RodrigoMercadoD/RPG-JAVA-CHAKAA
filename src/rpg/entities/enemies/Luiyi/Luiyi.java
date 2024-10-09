@@ -24,10 +24,10 @@ public class Luiyi extends Enemy {
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 25);
+        this.stats.put(Stats.HP, 22);
+        this.stats.put(Stats.ATTACK, 5);
+        this.stats.put(Stats.DEFENSE, 3);
     }
     /**
      * Método que realiza el ataque 'Golpe Callejero' de Luiyi.
