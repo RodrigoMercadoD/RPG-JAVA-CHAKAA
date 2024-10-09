@@ -19,7 +19,7 @@ public class Luiyi extends Enemy {
 
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Luiyi solto 3 Clauidiolares";
     }
     @Override
     protected void initCharacter() {
