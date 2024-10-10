@@ -13,15 +13,15 @@ public class BrayanTepito extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "BrayanTepito vendio tachas y perico";
     }
     @Override
-    protected void initCharacter() {
+    protected void initCharacter() { 
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 16);
+        this.stats.put(Stats.HP, 18);
+        this.stats.put(Stats.ATTACK, 1);
+        this.stats.put(Stats.DEFENSE, 3);
     }
     @Override
     public void attack(GameCharacter enemy) {
