@@ -13,7 +13,7 @@ public class BrayanTepito extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "BrayanTepito vendio tachas y perico";
+        return "Vendio tachas y perico";
     }
     @Override
     protected void initCharacter() { 
