@@ -19,15 +19,15 @@ public class Iker extends Enemy {
 
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Saco las miches";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 17);
+        this.stats.put(Stats.HP, 19);
+        this.stats.put(Stats.ATTACK, 2);
+        this.stats.put(Stats.DEFENSE, 5);
     }
     /**
      * Método que realiza el ataque 'Lanzamiento de Botella' de Iker.
