@@ -19,7 +19,7 @@ public class Brayan extends Enemy {
 
     @Override
     public String getLoot(){
-        return "Brayan solto una navaja";
+        return "Solto una navaja";
     }
     @Override
     protected void initCharacter() {
