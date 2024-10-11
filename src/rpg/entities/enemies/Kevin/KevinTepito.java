@@ -19,12 +19,12 @@ public class KevinTepito extends Enemy {
 
     @Override
     public String getLoot(){
-        return "kevin solto golpe de marea";
+        return "kevin solto botellazos";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 25);
+        this.stats.put(Stats.MAX_HP, 20);
         this.stats.put(Stats.HP, 23);
         this.stats.put(Stats.ATTACK, 6);
         this.stats.put(Stats.DEFENSE, 4);
