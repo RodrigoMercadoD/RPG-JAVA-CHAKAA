@@ -12,7 +12,7 @@ public class IkerTepito extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "Iker solto piedras";
+        return "solto piedrazos";
     }
     @Override
     protected void initCharacter() {
