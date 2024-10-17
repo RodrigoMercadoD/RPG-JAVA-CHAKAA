@@ -1,4 +1,4 @@
-import rpg.entities.GameCharacter;
+
 import rpg.entities.Player;
 import rpg.entities.enemies.Enemy;
 import rpg.entities.enemies.Brayan.BrayanTepito;
@@ -7,12 +7,11 @@ import rpg.entities.enemies.Kevin.KevinTepito;
 import rpg.entities.enemies.Luiyi.LuiyiTepito;
 import rpg.entities.enemies.Policia.PoliciaTepito;
 
+import rpg.gui.MainWindow;
 import rpg.utils.Randomize;
 
-import javax.xml.namespace.QName;
-
 /**
- * La clase Game representa el flujo principal de un juego rpg.
+ * La clase Game representa el flujo principal de un juego RPG.
  * En esta clase se define al jugador y al enemigo, y se maneja la pelea entre ellos.
  */
 public class Game {
@@ -27,7 +26,11 @@ public class Game {
      * Método principal que inicia el juego.
      */
     public static void main(String[] args) {
-        Game game = new Game(); // Crea una nueva instancia del juego
+        // Crear una instancia de MainWindow para mostrar la ventana principal
+        MainWindow mainWindow = new MainWindow();
+
+        // Crear una nueva instancia del juego
+        Game game = new Game(); // Esto también puede ser movido a un evento en la GUI
         game.startGame(); // Inicia el flujo del juego
     }
 
@@ -62,12 +65,12 @@ public class Game {
             }
         }
 
-        // Eleccion para determinar quien gana segun quien sigue vivo
+        // Elección para determinar quien gana según quien sigue vivo
         if (player.isAlive()) {
             System.out.println(player.getName() + " gana!"); // El jugador gana
-            System.out.println(enemy.getLoot() + "y ha sido obtenido");
+            System.out.println(enemy.getLoot() + " y ha sido obtenido");
         } else {
-            System.out.println(enemy.getName() + " gana!");// El enemigo gana
+            System.out.println(enemy.getName() + " gana!"); // El enemigo gana
         }
     }
 }
