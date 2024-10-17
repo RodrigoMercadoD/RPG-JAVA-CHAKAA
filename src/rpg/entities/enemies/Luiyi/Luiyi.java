@@ -19,15 +19,15 @@ public class Luiyi extends Enemy {
 
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Luiyi solto 3 Clauidiolares";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 25);
+        this.stats.put(Stats.HP, 22);
+        this.stats.put(Stats.ATTACK, 5);
+        this.stats.put(Stats.DEFENSE, 3);
     }
     /**
      * Método que realiza el ataque 'Golpe Callejero' de Luiyi.

@@ -15,23 +15,19 @@ public class Brayan extends Enemy {
      */
     public Brayan() {
         super("Brayan");
-        this.stats.put(Stats.MAX_HP, 40); // Vida máxima de Brayan
-        this.stats.put(Stats.HP, 40); // Vida actual de Brayan
-        this.stats.put(Stats.ATTACK, 7); // Ataque de Brayan
-        this.stats.put(Stats.DEFENSE, 3); // Defensa de Brayan
     }
 
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Solto una navaja";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 3);
+        this.stats.put(Stats.HP, 9);
+        this.stats.put(Stats.ATTACK, 2);
+        this.stats.put(Stats.DEFENSE, 4);
     }
     /**
      * Método que realiza el ataque 'Golpe Rápido' de Brayan.

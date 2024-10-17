@@ -16,15 +16,15 @@ public class LuiyiTepito extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Luiyi solto 20 pejecoins";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 24);
+        this.stats.put(Stats.HP, 22);
+        this.stats.put(Stats.ATTACK, 3);
+        this.stats.put(Stats.DEFENSE, 2);
     }
 
     protected void Perreke(GameCharacter enemy) {

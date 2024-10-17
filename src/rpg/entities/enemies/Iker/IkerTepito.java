@@ -12,15 +12,15 @@ public class IkerTepito extends Enemy {
     }
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Iker solto piedrazos";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 15);
+        this.stats.put(Stats.HP, 16);
+        this.stats.put(Stats.ATTACK, 8);
+        this.stats.put(Stats.DEFENSE, 5);
     }
     protected void Michelada(GameCharacter enemy) {
 

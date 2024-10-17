@@ -19,15 +19,15 @@ public class Kevin extends Enemy {
 
     @Override
     public String getLoot(){
-        return "Policia solto 5 umas";
+        return "Kevin solto anfetaminas";
     }
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 20);
-        this.stats.put(Stats.ATTACK, 4);
-        this.stats.put(Stats.DEFENSE, 1);
+        this.stats.put(Stats.MAX_HP, 26);
+        this.stats.put(Stats.HP, 24);
+        this.stats.put(Stats.ATTACK, 6);
+        this.stats.put(Stats.DEFENSE, 4);
     }
     /**
      * Método que realiza el ataque 'Lanzamiento de Piedra' de Kevin.
