@@ -20,15 +20,15 @@ public class MainWindow extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MainWindow(); //
+        new MainWindow(); //inicio un constructor para poder determinar el tamano de mis paneles
     }
 
     private void createUIComponents() {
         Estado =new JPanel();
-        Estado.setPreferredSize(WindowConstants.TOP_DIMENSION);
+        Estado.setPreferredSize(WindowConstants.TOP_DIMENSIONE);//determino mi tamano con las constantes de mi interfaz
         Accion =new JPanel();
-        Accion.setPreferredSize(WindowConstants.TOP_DIMENSION);
+        Accion.setPreferredSize(WindowConstants.TOP_DIMENSIONA);//determino mi tamano con las constantes de mi interfaz
         Juego =new JPanel();
-        Juego.setPreferredSize(WindowConstants.TOP_DIMENSION);
+        Juego.setPreferredSize(WindowConstants.TOP_DIMENSIONJ);//determino mi tamano con las constantes de mi interfaz
     }
 }
