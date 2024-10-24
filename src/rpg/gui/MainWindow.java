@@ -1,16 +1,10 @@
 package rpg.gui;
 
+import javax.swing.*;
 import rpg.gui.buttons.BaseButton;
-import rpg.gui.internalFrames.CristalFrame;
-import rpg.gui.internalFrames.StatusFrame;
 import rpg.gui.panels.BottomPanel;
 import rpg.gui.panels.MiddlePanel;
 import rpg.gui.panels.TopPanel;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame {
     private JPanel mainPanel;
@@ -60,6 +54,9 @@ public class MainWindow extends JFrame {
 
     public static void main(String[] args) {
         new MainWindow();
+        SwingUtilities.invokeLater(() -> {
+            new MainWindow();
+        });
     }
     private void createUIComponents() {
         topPanel = new TopPanel();

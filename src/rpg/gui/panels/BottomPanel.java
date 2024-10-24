@@ -11,7 +11,7 @@ public class BottomPanel extends BackgroundPanel {
     protected void init() {
         // Buscamos la imagen por ahora directamente en los directorios
         backgroundImage = new ImageIcon(ImageCache.addImage("bottomPanel",
-                "window_sections.png"));
+                "wall2.png"));
         setDimension(WindowConstants.MIDDLE_DIMENSION);
         setBorder(WindowConstants.EMPTY_BORDER);
     }

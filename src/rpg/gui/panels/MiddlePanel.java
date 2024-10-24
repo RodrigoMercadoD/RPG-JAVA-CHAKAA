@@ -11,7 +11,7 @@ public class MiddlePanel extends BackgroundPanel {
     protected void init() {
         // Buscamos la imagen por ahora directamente en los directorios
         backgroundImage = new ImageIcon(ImageCache.addImage("midPanel",
-                "window_sections.png"));
+                "City1.png"));
         setDimension(WindowConstants.MIDDLE_DIMENSION);
         setBorder(WindowConstants.EMPTY_BORDER);
     }
