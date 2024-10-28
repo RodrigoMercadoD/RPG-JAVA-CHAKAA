@@ -57,12 +57,12 @@ public class HoverbuttonUI extends BasicButtonUI {
         parts = new ImageIcon[3];
         partsHover = new ImageIcon[3];
         // Agregamos las imágenes a la caché.
-        ImageCache.addImage("userLeftSide", " ");
-        ImageCache.addImage("userCenterSide", " ");
-        ImageCache.addImage("userRightSide", " ");
-        ImageCache.addImage("userHoverLeftSide", " ");
-        ImageCache.addImage("userHoverCenterSide", " ");
-        ImageCache.addImage("userHoverRightSide", " ");
+        ImageCache.addImage("userLeftSide", "Sky.png");
+        ImageCache.addImage("userCenterSide", "Sky.png");
+        ImageCache.addImage("userRightSide", "Sky.png");
+        ImageCache.addImage("userHoverLeftSide", "Sky.png");
+        ImageCache.addImage("userHoverCenterSide", "Sky.png");
+        ImageCache.addImage("userHoverRightSide", "Sky.png");
         // Obtenemos las imágenes de la caché y las almacenamos en los arreglos correspondientes.
         parts[0] = ImageCache.getImageIcon("userLeftSide");
         parts[1] = ImageCache.getImageIcon("userCenterSide");
