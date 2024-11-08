@@ -3,10 +3,6 @@ package rpg.entities;
 import rpg.enums.Stats;
 import java.util.HashMap;
 
-/**
- * Clase base para todos los personajes
- * Los personajes pueden ser jugadores o enemigos
- */
 public abstract class GameCharacter {
 
     /** El nombre del personaje */
