@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package rpg.gui.buttons;
 
     public class AttackButton extends UserButton{
@@ -7,3 +8,14 @@ package rpg.gui.buttons;
         }
     }
 
+=======
+package rpg.gui.buttons;
+
+    public class AttackButton extends UserButton{
+
+        public AttackButton() {
+            super("Atacar");
+        }
+    }
+
+>>>>>>> origin/master
