@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package rpg.gui;
 
 import javax.swing.*;
@@ -74,7 +73,6 @@ public class MainWindow extends JFrame {
         //habilidadesButton = new SkillPanelButton();
     }
 }
-=======
 package rpg.gui;
 
 import javax.swing.*;
@@ -148,4 +146,4 @@ public class MainWindow extends JFrame {
         exampleLabel = new PortraitLabel();
     }
 }
->>>>>>> origin/master
+
