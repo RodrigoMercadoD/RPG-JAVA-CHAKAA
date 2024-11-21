@@ -21,9 +21,14 @@ public enum BarType {
                 bar = ImageCache.addImage("life_bar", "life_bar.png");
             }
             case MAGIC -> {
-                // Se cargan las imágenes para la barra de magia
+                container = ImageCache.addImage("magic_container", "magic_container.png");
+                icon = ImageCache.addImage("magic_icon", "magic_icon.png");
+                bar = ImageCache.addImage("magic_bar", "magic_bar.png");// Se cargan las imágenes para la barra de magia
             }
             case EXPERIENCE -> {
+                container = ImageCache.addImage("xp_container", "xp_container.png");
+                icon = ImageCache.addImage("xp_icon", "xp_icon.png");
+                bar = ImageCache.addImage("xp_bar", "xp_bar.png");
                 // Se cargan las imágenes para la barra de experiencia
             }
         }
