@@ -21,5 +21,7 @@ public class BaseButton extends JButton {
         // Aquí inicializamos los iconos utilizando ImageCache
         setIcon(new ImageIcon(ImageCache.addImage("shopIdle", "window_sections.png")));
         setRolloverIcon(new ImageIcon(ImageCache.addImage("shopHover", "window_sections.png")));
+        setIcon(new ImageIcon(ImageCache.addImage("ATACAR", "window_sections.png")));
+        setRolloverIcon(new ImageIcon(ImageCache.addImage("shopHover", "window_sections.png")));
     }
 }

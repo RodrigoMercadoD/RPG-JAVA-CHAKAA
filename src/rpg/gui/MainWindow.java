@@ -3,7 +3,6 @@ package rpg.gui;
 import javax.swing.*;
 
 import rpg.enums.BarType;
-import rpg.gui.buttons.BaseButton;
 import rpg.gui.labels.BarLabel;
 import rpg.gui.labels.PortraitLabel;
 import rpg.gui.panels.BottomPanel;
@@ -25,6 +24,9 @@ public class MainWindow extends JFrame {
     private JLabel lifeLabel;
     private JLabel magicLabel;
     private JLabel expLabel;
+    private JButton AttackButton;
+    private JButton INVENTARIOButton;
+    private JButton HUIRButton;
 
 
     /**
@@ -70,15 +72,27 @@ public class MainWindow extends JFrame {
      * Inicializa los paneles y el botón.
      */
     private void createUIComponents() {
+        //PANELES
         topPanel = new TopPanel();
         middlePanel = new MiddlePanel();
         bottomPanel = new BottomPanel();
-        FleeButton = new BaseButton("Button 1");
+
+        //BOTONES
+        // Cargar las imágenes para los botones
+        ImageIcon attackIcon = new ImageIcon("B1.png");  // Ruta a la imagen de atacar
+        ImageIcon inventoryIcon = new ImageIcon("path/to/inventoryIcon.png"); // Ruta a la imagen de inventario
+        ImageIcon fleeIcon = new ImageIcon("path/to/fleeIcon.png");  // Ruta a la imagen de huir
+
+        // Crear los botones con imágenes
+        AttackButton = new JButton("Atacar", attackIcon); // Botón de ataque con imagen
+        INVENTARIOButton = new JButton("Inventario", inventoryIcon); // Botón de inventario con imagen
+        HUIRButton = new JButton("Huir", fleeIcon);
+
+        //ETIQUETAS
         portraitLabel = new PortraitLabel();
-        ImageIcon lifeImage = new ImageIcon("B1.png"); // Cambia la ruta a la ubicación de tu imagen
-        lifeLabel = new BarLabel(100, 100, BarType.LIFE, lifeImage);
-        magicLabel = new BarLabel(30, 100, BarType.MAGIC);
-        expLabel = new BarLabel(0, 350, BarType.EXPERIENCE);
+        lifeLabel = new BarLabel(100, 100, BarType.LIFE);
+        magicLabel = new BarLabel(70, 100, BarType.MAGIC);
+        expLabel = new BarLabel(10, 350, BarType.EXPERIENCE);
         //huirButton = new FleeButton();atacarButton = new AttackButton();
         //habilidadesButton = new SkillPanelButton();
     }
