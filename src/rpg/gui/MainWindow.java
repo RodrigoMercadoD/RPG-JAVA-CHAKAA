@@ -3,11 +3,15 @@ package rpg.gui;
 import javax.swing.*;
 
 import rpg.enums.BarType;
+import rpg.gui.buttons.AttackButton;
+import rpg.gui.buttons.UserButton;
 import rpg.gui.labels.BarLabel;
 import rpg.gui.labels.PortraitLabel;
 import rpg.gui.panels.BottomPanel;
 import rpg.gui.panels.MiddlePanel;
 import rpg.gui.panels.TopPanel;
+
+import java.awt.*;
 
 /**
  * Clase principal que representa la ventana principal del juego RPG.
@@ -27,6 +31,7 @@ public class MainWindow extends JFrame {
     private JButton AttackButton;
     private JButton INVENTARIOButton;
     private JButton HUIRButton;
+    private JButton SALIR;
 
 
     /**
@@ -79,21 +84,19 @@ public class MainWindow extends JFrame {
 
         //BOTONES
         // Cargar las imágenes para los botones
-        ImageIcon attackIcon = new ImageIcon("B1.png");  // Ruta a la imagen de atacar
-        ImageIcon inventoryIcon = new ImageIcon("path/to/inventoryIcon.png"); // Ruta a la imagen de inventario
-        ImageIcon fleeIcon = new ImageIcon("path/to/fleeIcon.png");  // Ruta a la imagen de huir
+        // Ruta a la imagen de huir
 
         // Crear los botones con imágenes
-        AttackButton = new JButton("Atacar", attackIcon); // Botón de ataque con imagen
-        INVENTARIOButton = new JButton("Inventario", inventoryIcon); // Botón de inventario con imagen
-        HUIRButton = new JButton("Huir", fleeIcon);
+        AttackButton = new AttackButton(); // Botón de ataque con imagen
+        INVENTARIOButton = new UserButton("Inventario"); // Botón de inventario con imagen
+        HUIRButton = new UserButton("Huir");
 
         //ETIQUETAS
         portraitLabel = new PortraitLabel();
         lifeLabel = new BarLabel(100, 100, BarType.LIFE);
         magicLabel = new BarLabel(70, 100, BarType.MAGIC);
         expLabel = new BarLabel(10, 350, BarType.EXPERIENCE);
-        //huirButton = new FleeButton();atacarButton = new AttackButton();
+        //huirButton = new FleeButton();
         //habilidadesButton = new SkillPanelButton();
     }
 }

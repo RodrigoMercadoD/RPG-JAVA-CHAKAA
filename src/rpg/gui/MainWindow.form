@@ -71,7 +71,7 @@
               </component>
             </children>
           </grid>
-          <component id="eccec" class="javax.swing.JButton" default-binding="true">
+          <component id="eccec" class="javax.swing.JButton" binding="SALIR">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -122,10 +122,9 @@
             <properties>
               <background color="-54738"/>
               <horizontalTextPosition value="0"/>
-              <text value="ATACAR"/>
             </properties>
           </component>
-          <component id="e0bf5" class="javax.swing.JButton" binding="INVENTARIOButton" default-binding="true">
+          <component id="e0bf5" class="javax.swing.JButton" binding="INVENTARIOButton" custom-create="true" default-binding="true">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="0" height="0"/>
@@ -133,16 +132,15 @@
             </constraints>
             <properties>
               <background color="-15663115"/>
-              <text value="INVENTARIO"/>
+              <text value="Inventario"/>
             </properties>
           </component>
-          <component id="3e0e5" class="javax.swing.JButton" binding="HUIRButton" default-binding="true">
+          <component id="3e0e5" class="javax.swing.JButton" binding="HUIRButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16056576"/>
-              <text value="HUIR"/>
             </properties>
           </component>
         </children>

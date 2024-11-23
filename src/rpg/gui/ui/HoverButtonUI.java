@@ -21,8 +21,8 @@ public class HoverButtonUI extends BasicButtonUI {
     protected void installDefaults(AbstractButton b) {
 
         initParts();
-        b.setFont(UIConstants.FONT.deriveFont(Font.PLAIN, 24));
-        b.setForeground(Color.BLACK);
+        b.setFont(UIConstants.FONT.deriveFont(Font.PLAIN, 16));
+        b.setForeground(Color.WHITE);
         b.setDoubleBuffered(true);
         b.setOpaque(false);
         b.setBorderPainted(false);
@@ -31,7 +31,7 @@ public class HoverButtonUI extends BasicButtonUI {
         b.setIconTextGap(5);
         b.setCursor(new Cursor(Cursor.HAND_CURSOR));
         String text = b.getText();
-        this.width = b.getFontMetrics(b.getFont()).stringWidth(text) + (5);
+        this.width = b.getFontMetrics(b.getFont()).stringWidth(text) + (18);
         this.height = 48;
     }
 
@@ -61,11 +61,11 @@ public class HoverButtonUI extends BasicButtonUI {
         partsHover = new ImageIcon[3];
         // Agregamos las imágenes a la caché.
         ImageCache.addImage("userLeftSide", "B1.png");
-        ImageCache.addImage("userCenterSide", "B1.png");
-        ImageCache.addImage("userRightSide", "B1.png");
-        ImageCache.addImage("userHoverLeftSide", "B1.png");
-        ImageCache.addImage("userHoverCenterSide", "B1.png");
-        ImageCache.addImage("userHoverRightSide", "B1.png");
+        ImageCache.addImage("userCenterSide", "B2.png");
+        ImageCache.addImage("userRightSide", "B3.png");
+        ImageCache.addImage("userHoverLeftSide", "C1.png");
+        ImageCache.addImage("userHoverCenterSide", "C2.png");
+        ImageCache.addImage("userHoverRightSide", "C3.png");
         // Obtenemos las imágenes de la caché y las almacenamos en los arreglos correspondientes.
         parts[0] = ImageCache.getImageIcon("userLeftSide");
         parts[1] = ImageCache.getImageIcon("userCenterSide");
@@ -90,11 +90,11 @@ public class HoverButtonUI extends BasicButtonUI {
 
     protected void drawButtonParts(Graphics2D g2d, ImageIcon[] parts) {
 
-        g2d.drawImage(parts[0].getImage(), 0, 0, null);
+        g2d.drawImage(parts[0].getImage(), 0, 0, parts[0].getIconWidth(), height, null);
         g2d.translate(27, 0);
         g2d.drawImage(parts[1].getImage(), 0, 0,
                 width, height, null);
         g2d.translate(width, 0);
-        g2d.drawImage(parts[2].getImage(), 0, 0, null);
+        g2d.drawImage(parts[2].getImage(), 0, 0, parts[0].getIconWidth(), height, null);
     }
 }
