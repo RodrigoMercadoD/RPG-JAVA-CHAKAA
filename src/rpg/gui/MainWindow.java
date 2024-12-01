@@ -98,5 +98,7 @@ public class MainWindow extends JFrame {
         expLabel = new BarLabel(10, 350, BarType.EXPERIENCE);
         //huirButton = new FleeButton();
         //habilidadesButton = new SkillPanelButton();
+
+
     }
 }

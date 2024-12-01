@@ -10,7 +10,7 @@ public interface UIConstants {
     int CORNER_HEIGHT = 77;
     Font FONT = new Font("Arial", Font.PLAIN, 12);  // Usa el tipo de fuente, estilo y tamaño que necesites
     //Font BAR_LABEL_FONT = FontCache.addFont("PAE", "fonts/PixelAE.ttf").deriveFont(16f);
-    //Font LABEL_FONT = FontCache.addFont("Retron", "fonts/Retron2000.ttf").deriveFont(Font.BOLD,18f);
+    Font LABEL_FONT = new Font("Arial", Font.PLAIN, 12);
     int WINDOW_WIDTH = 1500;
     int TOP_HEIGHT = 150;
     int MIDDLE_HEIGHT = 320;
@@ -27,4 +27,5 @@ public interface UIConstants {
     Dimension BAR_LABEL = new Dimension(172, 51);
     EmptyBorder EMPTY_BORDER = new EmptyBorder(14, SIMPLE_MARGIN,
             SIMPLE_MARGIN, SIMPLE_MARGIN);
+
 }
