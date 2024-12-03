@@ -1,10 +1,13 @@
 package rpg.entities.enemies.Kevin;
 import rpg.entities.enemies.Enemy;
 import rpg.entities.GameCharacter;
-import rpg.entities.enemies.Enemy;
 import rpg.enums.EnemyType;
 import rpg.enums.Stats;
+import rpg.exceptions.EnemyDeathException;
 import rpg.utils.Randomize;
+import rpg.utils.cache.ImageCache;
+
+import javax.swing.*;
 
 public class KevinTepito extends Enemy {
     /**
@@ -12,52 +15,92 @@ public class KevinTepito extends Enemy {
      *
      * @param name
      */
-    public KevinTepito(String name) {
-        super(name);
-        this.name = "Kevin de Tepito";
+    public KevinTepito() {
+        super("Kevin Tepito");
+        ImageCache.addImage("Brayan", "Brayan.png");
     }
 
     @Override
-    public String getLoot(){
-        return "Kevin solto botellazos";
+    public String getLoot() {
+        return "El Brayan solto:";
     }
+
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 20);
-        this.stats.put(Stats.HP, 23);
+        this.stats.put(Stats.MAX_HP, 35);
+        this.stats.put(Stats.HP, 35);
         this.stats.put(Stats.ATTACK, 6);
-        this.stats.put(Stats.DEFENSE, 4);
+        this.stats.put(Stats.DEFENSE, 2);
+        this.stats.put(Stats.EXPERIENCE, 20);
+        this.stats.put(Stats.GOLD, 10);
     }
+
     @Override
-    public void attack(GameCharacter enemy) {
-        int attack = Randomize.getRandomInt(1, 3);
+    public String attack(GameCharacter enemy) {
+        String message;
+        // Se elige un número aleatorio entre 1 y 100
+        int random = Randomize.getRandomInt(1, 100);
+        // 50% de probabilidad de atacar normalmente
+        // 25% de probabilidad de morder
+        // 25% de probabilidad de lanzar una roca
+        int attack = (random <= 50) ? 3 : (random <= 75) ? 2 : 1;
+        // Se elige el ataque a realizar
         switch (attack) {
             case 1:
-                throwKnife(enemy);
+                try {
+                    message = cuhillazo(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan novato lanza una roca y te hace 2 de daño.
+                            ¡Has muerto!
+                            """;
+                }
                 break;
             case 2:
-                fireBalls(enemy);
+                try {
+                    message = mecherazo(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan novato muerde salvajemente y te hace 3 de daño.
+                            ¡Has muerto!
+                            """;
+                }
                 break;
             default:
-                super.attack(enemy);
+                message = ((GameCharacter) this).attack(enemy);
                 break;
         }
+        return message;
     }
-    protected void throwKnife(GameCharacter enemy) {
+
+    protected String cuhillazo(GameCharacter enemy) throws EnemyDeathException {
         int damage = 2;
-        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " throws a rock at " + enemy.getName() + " for "
-                + damage + " damage!");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s le entierra una navaja a %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
     }
 
-    protected void fireBalls(GameCharacter enemy) {
+    protected String mecherazo(GameCharacter enemy) throws EnemyDeathException {
         int damage = 3;
-        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " bites " + enemy.getName() + " for " + damage + " damage!");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s Usa su encendedor culero y quema a %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
     }
 
+    @Override
+    public ImageIcon getSprite() {
 
+        return ImageCache.getImageIcon("Brayan");
+    }
 }

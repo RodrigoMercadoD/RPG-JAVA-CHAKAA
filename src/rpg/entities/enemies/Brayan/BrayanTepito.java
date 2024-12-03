@@ -4,53 +4,99 @@ import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
 import rpg.enums.EnemyType;
 import rpg.enums.Stats;
+import rpg.exceptions.EnemyDeathException;
 import rpg.utils.Randomize;
+import rpg.utils.cache.ImageCache;
+
+import javax.swing.*;
 
 public class BrayanTepito extends Enemy {
 
     public BrayanTepito() {
-        super("Brayan Tepito");
+        super("BrayanTepito" );
+        ImageCache.addImage("BrayanTepito", "BrayanTepito.png");
     }
     @Override
-    public String getLoot(){
-        return "Vendio tachas y perico";
+    public String getLoot() {
+        return "El Brayan solto:";
     }
+
     @Override
-    protected void initCharacter() { 
+    protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 16);
-        this.stats.put(Stats.HP, 18);
-        this.stats.put(Stats.ATTACK, 1);
-        this.stats.put(Stats.DEFENSE, 3);
+        this.stats.put(Stats.MAX_HP, 35);
+        this.stats.put(Stats.HP, 35);
+        this.stats.put(Stats.ATTACK, 6);
+        this.stats.put(Stats.DEFENSE, 2);
+        this.stats.put(Stats.EXPERIENCE, 20);
+        this.stats.put(Stats.GOLD, 10);
     }
+
     @Override
-    public void attack(GameCharacter enemy) {
-        int attack = Randomize.getRandomInt(1, 3);
+    public String attack(GameCharacter enemy) {
+        String message;
+        // Se elige un número aleatorio entre 1 y 100
+        int random = Randomize.getRandomInt(1, 100);
+        // 50% de probabilidad de atacar normalmente
+        // 25% de probabilidad de morder
+        // 25% de probabilidad de lanzar una roca
+        int attack = (random <= 50) ? 3 : (random <= 75) ? 2 : 1;
+        // Se elige el ataque a realizar
         switch (attack) {
             case 1:
-                DesconectedePeda(enemy);
+                try {
+                    message = golpeRapido(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan de Tepito te desmadrea y te hace 2 de daño.
+                            ¡Has muerto!
+                            """;
+                }
                 break;
             case 2:
-                GuardameelFilero(enemy);
+                try {
+                    message = patadaCallejera(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan novato muerde salvajemente y te hace 3 de daño.
+                            ¡Has muerto!
+                            """;
+                }
                 break;
             default:
-                super.attack(enemy);
+                message = ((GameCharacter) this).attack(enemy);
                 break;
         }
+        return message;
     }
 
-    protected void DesconectedePeda(GameCharacter enemy) {
+    protected String golpeRapido(GameCharacter enemy) throws EnemyDeathException {
         int damage = 2;
-        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " Se desconecta contra ti " + enemy.getName() + " con "
-                + damage + " de daño!");
-        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s Te lanza una piedra cricosa, %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
     }
 
-    protected void GuardameelFilero(GameCharacter enemy) {
+    protected String patadaCallejera(GameCharacter enemy) throws EnemyDeathException {
         int damage = 3;
-        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " Te arroja el filero " + enemy.getName() + " y hace " + damage + " de daño!");
-        System.out.println(enemy.getName() + " tiene " + enemy.getStats().get(Stats.HP) + " HP restante");
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s Te avienta su envase de cheve, %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
+    }
+
+    @Override
+    public ImageIcon getSprite() {
+
+        return ImageCache.getImageIcon("BrayanTepito");
     }
 }

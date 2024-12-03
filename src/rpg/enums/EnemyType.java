@@ -5,4 +5,5 @@ public enum EnemyType {
     ADVANCE,
     BOSS,
     SECRET
+
 }

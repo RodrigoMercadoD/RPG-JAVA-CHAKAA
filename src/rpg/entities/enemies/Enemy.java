@@ -5,6 +5,7 @@ import rpg.entities.Player;
 import rpg.enums.EnemyType;
 import rpg.enums.Stats;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -23,18 +24,9 @@ public abstract class Enemy extends GameCharacter {
         super (name); // Nombre del enemigo
         this.name = name; // Asigna el nombre del enemigo
     }
-
     public abstract String getLoot();
 
-    public String getName() {
-        return name; // Devuelve el nombre del enemigo
-    }
-
-    /**
-     * Realiza un ataque al jugador, calculando un daño aleatorio adicional entre 1 y 5.
-     * El daño total es la suma del ataque del enemigo y un valor aleatorio, menos la defensa del jugador.
-     * Si el daño es positivo, se resta a los puntos de vida del jugador, de lo contrario, no se hace daño.
-     */
+    /*
     public void attack(GameCharacter player) {
 
         int damage = (this.stats.get(Stats.ATTACK) ) - player.getStats().get(Stats.DEFENSE);
@@ -50,7 +42,7 @@ public abstract class Enemy extends GameCharacter {
             System.out.println(this.name + " TE ATACA, " + player.getName() + " PERO NO HACE DAÑO");
         }
     }
-
+*/
     public boolean isAlive() {
         return this.stats.get(Stats.HP) > 0; // Devuelve si el HP del enemigo es mayor a 0
     }
@@ -62,8 +54,16 @@ public abstract class Enemy extends GameCharacter {
     public HashMap<Stats, Integer> getStats() {
         return stats; // Devuelve el mapa que contiene las estadísticas del enemigo
     }
+
     public EnemyType getType() {
         return type;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public abstract ImageIcon getSprite();
 }
+
 

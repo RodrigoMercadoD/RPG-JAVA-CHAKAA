@@ -3,50 +3,103 @@ import rpg.entities.GameCharacter;
 import rpg.entities.enemies.Enemy;
 import rpg.enums.EnemyType;
 import rpg.enums.Stats;
+import rpg.exceptions.EnemyDeathException;
 import rpg.utils.Randomize;
+import rpg.utils.cache.ImageCache;
+
+import javax.swing.*;
 
 public class LuiyiTepito extends Enemy {
     /**
      * Constructor de la clase Enemy.
      *
-     * @param name
      */
-    public LuiyiTepito(String name) {
+    public LuiyiTepito() {
         super("Luiyi de tepito");
+        ImageCache.addImage("Brayan", "Brayan.png");
     }
+
     @Override
-    public String getLoot(){
-        return "Luiyi solto 20 pejecoins";
+    public String getLoot() {
+        return "El Luiyi de tepito ";
     }
+
     @Override
     protected void initCharacter() {
         this.type = EnemyType.BASIC;
-        this.stats.put(Stats.MAX_HP, 24);
-        this.stats.put(Stats.HP, 22);
-        this.stats.put(Stats.ATTACK, 3);
+        this.stats.put(Stats.MAX_HP, 35);
+        this.stats.put(Stats.HP, 35);
+        this.stats.put(Stats.ATTACK, 6);
         this.stats.put(Stats.DEFENSE, 2);
-    }
-
-    protected void Perreke(GameCharacter enemy) {
-
-        System.out.println(this.name + " Baja hasta el suelo " + enemy.getName() + " y quedas con el ojo cuadrado.");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
-    }
-
-    protected void Nachos(GameCharacter enemy) {
-
-        int damage = (int) (this.stats.get(Stats.ATTACK) * 0.8);
-        enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-        System.out.println(this.name + " pide unos nachos con queso caliente " + enemy.getName() + " te quema " + damage + " y tienes chile en el ojo!");
-        System.out.println(enemy.getName() + " has " + enemy.getStats().get(Stats.HP) + " HP left.");
+        this.stats.put(Stats.EXPERIENCE, 20);
+        this.stats.put(Stats.GOLD, 10);
     }
 
     @Override
-    public void attack(GameCharacter enemy) {
-        if (Math.random() < 0.5) {
-            Perreke(enemy);
-        } else {
-            Nachos(enemy);
+    public String attack(GameCharacter enemy) {
+        String message;
+        // Se elige un número aleatorio entre 1 y 100
+        int random = Randomize.getRandomInt(1, 100);
+        // 50% de probabilidad de atacar normalmente
+        // 25% de probabilidad de morder
+        // 25% de probabilidad de lanzar una roca
+        int attack = (random <= 50) ? 3 : (random <= 75) ? 2 : 1;
+        // Se elige el ataque a realizar
+        switch (attack) {
+            case 1:
+                try {
+                    message = nachos(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan novato lanza una roca y te hace 2 de daño.
+                            ¡Has muerto!
+                            """;
+                }
+                break;
+            case 2:
+                try {
+                    message = perreke(enemy);
+                } catch (EnemyDeathException e) {
+                    enemy.getStats().put(Stats.HP, 0);
+                    message = """
+                            El Brayan novato muerde salvajemente y te hace 3 de daño.
+                            ¡Has muerto!
+                            """;
+                }
+                break;
+            default:
+                message = ((GameCharacter) this).attack(enemy);
+                break;
         }
+        return message;
+    }
+
+    protected String nachos(GameCharacter enemy) throws EnemyDeathException {
+        int damage = 2;
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s le avienta sus nachos a %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
+    }
+
+    protected String perreke(GameCharacter enemy) throws EnemyDeathException {
+        int damage = 3;
+        int newHP = reduceHP(enemy, damage);
+        String enemyName = enemy.getName();
+        String message = String.format("""
+                ¡%s le perrea obscenamente a: %s por %d de daño!
+                %s tiene %d HP restantes.
+                """, this.name, enemyName, damage, enemyName, newHP);
+        return message;
+    }
+
+    @Override
+    public ImageIcon getSprite() {
+
+        return ImageCache.getImageIcon("Brayan");
     }
 }

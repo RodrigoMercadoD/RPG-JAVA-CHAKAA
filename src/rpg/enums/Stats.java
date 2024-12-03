@@ -1,17 +1,61 @@
 package rpg.enums;
 
+/**
+ * Características de los personajes.
+ *
+ * @author Fulanito
+ */
 public enum Stats {
-    HP,
+    /**
+     * Vida máxima.
+     */
     MAX_HP,
-    MP,
+    /**
+     * Vida actual.
+     */
+    HP,
+    /**
+     * Puntos de magia máximos.
+     */
     MAX_MP,
+    /**
+     * Puntos de magia actuales.
+     */
+    MP,
+    /**
+     * Ataque.
+     */
     ATTACK,
+    /**
+     * Defensa.
+     */
     DEFENSE,
+    /**
+     * Velocidad.
+     */
     SPEED,
+    /**
+     * Suerte.
+     */
     LUCK,
-    DEXTERITY,
+    /**
+     * Precisión.
+     */
     ACCURACY,
+    /**
+     * Evasión.
+     */
     EVASION,
-    CRITICAL_HIT_CHANCE,
-    CRITICAL_HIT_DAMAGE
+    /**
+     * Destreza
+     */
+    DEXTERITY,
+    /**
+     * Inteligencia.
+     */
+    INTELLIGENCE,
+    EXPERIENCE,
+    NEEDED_EXPERIENCE,
+    LEVEL,
+    GOLD
 }

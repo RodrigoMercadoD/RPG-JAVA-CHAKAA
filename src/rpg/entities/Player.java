@@ -1,61 +1,204 @@
 package rpg.entities;
 
-import java.util.HashMap;
-import java.util.Random;
 import rpg.enums.Stats;
-import rpg.entities.enemies.Enemy;
+import rpg.enums.WearType;
+import rpg.exceptions.ItemNotFoundException;
+import rpg.inventory.Inventory;
+import rpg.items.Equipment;
+import rpg.items.Item;
+import rpg.items.miscs.Misc;
+import rpg.items.weapons.Weapon;
+import rpg.utils.Randomize;
+
+import javax.swing.*;
+import java.io.*;
+import java.util.HashMap;
+
 /**
- * Iniciamos una clase Player con un nombre, estadisticas y un numero aleatorio para su ataque varie
+ * The type Player.
  */
-public class Player extends GameCharacter {
+public class Player extends GameCharacter implements Serializable {
 
-    private Random random;
+    private final Inventory inventory;
+    private HashMap<WearType, Equipment> equipment;
 
+    /**
+     * Instantiates a new Player.
+     *
+     * @param name the name
+     */
     public Player(String name) {
 
-        super("Jugador");
-        this.random = new Random();
-        this.name = name;
+        super(name);
+        inventory = new Inventory();
     }
 
-    @Override
-    protected void initCharacter() {
+    public void save(int slot) {
 
-        this.stats.put(Stats.MAX_HP, 100);
-        this.stats.put(Stats.HP, 100);
-        this.stats.put(Stats.ATTACK, 10);
-        this.stats.put(Stats.DEFENSE, 5);
-    }
-    /**
-     * Realiza un ataque al enemigo, calculando un daño aleatorio adicional entre 1 y 5, el daño total es la suma del ataque del jugador y un valor aleatorio, menos la defensa del enemigo.
-     * Si el daño es positivo, se resta a los puntos de vida del enemigo, de lo contrario, no se hace daño.
-     *
-     * @param enemy El enemigo al que se ataca.
-     */
-    public void attack(Enemy enemy) {
-        int randomDamage = random.nextInt(5) + 1; // Número aleatorio entre 1 y 5 para variar el dano
-        int damage = (this.stats.get(Stats.ATTACK) + randomDamage) - enemy.getStats().get(Stats.DEFENSE);  // Calcula el daño final: ataque del jugador + daño aleatorio - defensa del enemigo
-        if (damage > 0) {  // Si el daño es mayor que 0, se aplica al HP del enemigo
-            // Resta el daño calculado a los puntos de vida (HP) del enemigo
-            enemy.getStats().put(Stats.HP, enemy.getStats().get(Stats.HP) - damage);
-            // Imprime un mensaje indicando el ataque exitoso y el daño realizado
-            System.out.println(this.name + " ATACA A " + enemy.getName() + " CON " + damage + " DE DAÑO");
-        } else {
-            // Si el daño es menor o igual a 0, no se hace daño y se imprime un mensaje
-            System.out.println(this.name + " ATACA A " + enemy.getName() + " PERO NO HACE DAÑO");
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("files/save" + slot + ".dat"));
+            out.writeObject(this);
+            out.close();
+            System.out.println("Game saved");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error saving the game");
         }
     }
 
+    public static Player load(int slot) {
 
-    public String getName() {
-        return name; //devolvemos el nombre del jugador
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream
+                    ("files/save" + slot + ".dat"));
+            Player player = (Player) in.readObject();
+            in.close();
+            return player;
+        } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error loading the game");
+        }
+        return null;
     }
 
-    public boolean isAlive() { //comprobamos con una funcion si el jugador sigue vivo para determinar en la clase game si la partida continua
-        return this.stats.get(Stats.HP) > 0;
+    public boolean tryToFlee() {
+
+        return Randomize.getRandomBoolean();
     }
 
-    public HashMap<Stats, Integer> getStats() {
-        return stats; //devuelve el mapa que va almacenando las estadisticas del jugador
+    public void levelUp() {
+
+        stats.put(Stats.LEVEL, stats.get(Stats.LEVEL) + 1);
+        stats.put(Stats.MAX_HP, stats.get(Stats.MAX_HP) + Randomize.getRandomInt(5, 10));
+        stats.put(Stats.HP, stats.get(Stats.MAX_HP));
+        stats.put(Stats.MAX_MP, stats.get(Stats.MAX_MP) + Randomize.getRandomInt(2, 5));
+        stats.put(Stats.MP, stats.get(Stats.MAX_MP));
+        stats.put(Stats.ATTACK, stats.get(Stats.ATTACK) + Randomize.getRandomInt(1, 3));
+        stats.put(Stats.DEFENSE, stats.get(Stats.DEFENSE) + Randomize.getRandomInt(1, 3));
+        stats.put(Stats.NEEDED_EXPERIENCE, stats.get(Stats.NEEDED_EXPERIENCE) + 50);
+        stats.put(Stats.EXPERIENCE, 0);
+    }
+
+    /**
+     * Función sobrescrita que inicializa las características
+     * del personaje.
+     */
+    @Override
+    protected void initCharacter() {
+
+        stats.put(Stats.LEVEL, 1);
+        stats.put(Stats.MAX_HP, 100);
+        stats.put(Stats.HP, 100);
+        stats.put(Stats.MAX_MP, 50);
+        stats.put(Stats.MP, 50);
+        stats.put(Stats.ATTACK, 10);
+        stats.put(Stats.DEFENSE, 5);
+        stats.put(Stats.EXPERIENCE, 0);
+        stats.put(Stats.NEEDED_EXPERIENCE, 100);
+        stats.put(Stats.GOLD, 0);
+        equipment= new HashMap<>();
+        equipment.put(WearType.HEAD, null);
+        equipment.put(WearType.CHEST, null);
+        equipment.put(WearType.LEGS, null);
+        equipment.put(WearType.FEET, null);
+        equipment.put(WearType.HANDS, null);
+        equipment.put(WearType.WEAPON, null);
+    }
+
+    public void addItemToInventory(Item item) {
+
+        if (item instanceof Misc misc) {
+            if (misc.isStackable()) {
+                boolean found = false;
+                for (Item i : inventory.getMiscs()) {
+                    if (i.getName().equals(misc.getName())) {
+                        misc.increaseQuantity(1);
+                        inventory.removeItem(i);
+                        inventory.addItem(misc);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    inventory.addItem(item);
+                }
+            } else {
+                inventory.addItem(item);
+            }
+        } else {
+            inventory.addItem(item);
+        }
+    }
+
+    public void removeItemFromInventory(Item item) {
+
+        if (item instanceof Misc misc) {
+            if (misc.isStackable()) {
+                for (Item i : inventory.getMiscs()) {
+                    if (i.getName().equals(item.getName())) {
+                        misc.decreaseQuantity(1);
+                        if (misc.getQuantity() == 0) {
+                            inventory.removeItem(i);
+                        }
+                        break;
+                    }
+                }
+            } else {
+                inventory.removeItem(item);
+            }
+        } else {
+            inventory.removeItem(item);
+        }
+    }
+
+    public void sellItem(Item item) {
+
+        try {
+            Item getItem = inventory.getItem(item);
+            if (getItem instanceof Misc misc) {
+                if (misc.isStackable()) {
+                    if (misc.getQuantity() > 1) {
+                        misc.decreaseQuantity(1);
+                    } else {
+                        inventory.removeItem(item);
+                    }
+                }
+            } else {
+                inventory.removeItem(getItem);
+            }
+        } catch (ItemNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public void showInventory() {
+
+        StringBuilder content = new StringBuilder("Inventory: \n");
+        String format = """
+                Name: %s, Price: %d
+                Description: %s
+                """;
+        String formatQuantity = """
+                Name: %s, Price: %d, Quantity: %d
+                Description: %s
+                """;
+        for (Item item : inventory.getItems()) {
+
+            if (item instanceof Misc misc) {
+                if (misc.isStackable()) {
+                    content.append(String.format(formatQuantity, item.getName(),
+                            item.getPrice(), misc.getQuantity(), item.getDescription()));
+                } else {
+                    content.append(String.format(format, item.getName(), item.getPrice(),
+                            item.getDescription()));
+                }
+            } else {
+                content.append(String.format(format, item.getName(), item.getPrice(),
+                        item.getDescription()));
+            }
+        }
+        JOptionPane.showMessageDialog(null, content.toString());
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }
