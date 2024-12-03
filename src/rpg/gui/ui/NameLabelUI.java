@@ -27,14 +27,14 @@ public class NameLabelUI extends GameLabelUI {
     protected void installDefaults(JLabel c) {
 
         c.setFont(UIConstants.LABEL_FONT);
-        c.setForeground(Color.BLACK);
+        c.setForeground(Color.WHITE);
         c.setVerticalAlignment(JLabel.CENTER);
         c.setHorizontalAlignment(JLabel.CENTER);
         c.setVerticalTextPosition(JLabel.CENTER);
         c.setHorizontalTextPosition(JLabel.CENTER);
         FontMetrics metrics = c.getFontMetrics(c.getFont());
         int textWidth = metrics.stringWidth(c.getText());
-        c.setPreferredSize(new Dimension(textWidth + 44, 51));
+        c.setPreferredSize(new Dimension(textWidth + 88, 75));
     }
 
     @Override

@@ -32,6 +32,15 @@ public class BarLabel extends JLabel {
         }
     }
 
+    public void updateBar(int value, int maxValue) {
+
+        setMaxValue(maxValue);
+        setBarValue(value);
+        setUI(new BarLabelUI(type));
+        revalidate();
+        repaint();
+    }
+
     public void setBarValue(int value) {
         this.barValue = value;
         setText(String.format("%d / %d", value, maxValue));
@@ -39,6 +48,10 @@ public class BarLabel extends JLabel {
 
     public int getBarValue() {
         return barValue;
+    }
+
+    public void setMaxValue(int value) {
+        this.maxValue = value;
     }
 
     public int getMaxValue() {

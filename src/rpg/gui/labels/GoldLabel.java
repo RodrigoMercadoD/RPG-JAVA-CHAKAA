@@ -8,8 +8,11 @@ import java.awt.*;
 
 public class GoldLabel extends PortraitLabel {
 
-    public GoldLabel() {
-        super();
+    private int gold;
+
+    public GoldLabel(int gold) {
+        super(null);
+        this.gold = gold;
         setFont(UIConstants.LABEL_FONT.deriveFont(Font.BOLD, 20f));
         setForeground(Color.BLACK);
         setVerticalAlignment(JLabel.CENTER);

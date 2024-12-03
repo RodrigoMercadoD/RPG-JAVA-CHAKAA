@@ -1,32 +1,54 @@
 package rpg.gui.ui;
 
-import javax.swing.plaf.basic.BasicButtonUI;
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.AbstractButton;
+import rpg.utils.cache.ImageCache;
 
-public class UserHoverUI extends BasicButtonUI {
-    // Aquí puedes personalizar la apariencia del botón cuando se pasa el ratón sobre él
+import javax.swing.*;
+import java.awt.*;
 
-    @Override
-    public void paint(Graphics g, javax.swing.JComponent c) {
-        super.paint(g, c);  // Llamamos al comportamiento base
+public class UserHoverUI extends HoverButtonUI {
 
-        AbstractButton button = (AbstractButton) c;
+    private final int staticWidth = 180;
 
-        // Cambiamos el color de fondo cuando el ratón pasa sobre el botón
-        if (button.getModel().isRollover()) {
-            g.setColor(new Color(100, 150, 255)); // Color azul claro
-            g.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), 10, 10); // Fondo redondeado
-        }
+    protected void installDefaults(AbstractButton b) {
+        super.installDefaults(b);
+        // Establecemos el borde del botón.
+        b.setForeground(Color.WHITE);
     }
 
     @Override
-    protected void paintButtonPressed(Graphics g, AbstractButton b) {
-        super.paintButtonPressed(g, b);
-        g.setColor(new Color(50, 50, 200)); // Color cuando el botón es presionado
-        g.fillRoundRect(0, 0, b.getWidth(), b.getHeight(), 10, 10); // Fondo presionado redondeado
+    public Dimension getPreferredSize(JComponent c) {
+
+        return new Dimension(staticWidth, 48);
     }
 
-    // Eliminar o corregir paintButtonFocus si no existe en la superclase
+    protected void initParts() {
+        //Inicializamos los arreglos de imágenes.
+        parts = new ImageIcon[3];
+        partsHover = new ImageIcon[3];
+        // Agregamos las imágenes a la caché.
+        ImageCache.addImage("actionLeftSide", "idleLeftSide.png");
+        ImageCache.addImage("actionCenterSide", "idleCenterSide.png");
+        ImageCache.addImage("actionRightSide", "idleRightSide.png");
+        ImageCache.addImage("actionHoverLeftSide", "hoverLeftSide.png");
+        ImageCache.addImage("actionHoverCenterSide", "hoverCenterSide.png");
+        ImageCache.addImage("actionHoverRightSide", "hoverRightSide.png");
+        // Obtenemos las imágenes de la caché y las almacenamos en los arreglos correspondientes.
+        parts[0] = ImageCache.getImageIcon("actionLeftSide");
+        parts[1] = ImageCache.getImageIcon("actionCenterSide");
+        parts[2] = ImageCache.getImageIcon("actionRightSide");
+        partsHover[0] = ImageCache.getImageIcon("actionHoverLeftSide");
+        partsHover[1] = ImageCache.getImageIcon("actionHoverCenterSide");
+        partsHover[2] = ImageCache.getImageIcon("actionHoverRightSide");
+    }
+
+    protected void drawButtonParts(Graphics2D g2d, ImageIcon[] parts) {
+
+        g2d.drawImage(parts[0].getImage(), 0, 0, null);
+        g2d.translate(27, 0);
+        g2d.drawImage(parts[1].getImage(), 0, 0,
+                staticWidth - 54, height, null);
+        g2d.translate(staticWidth - 54, 0);
+        g2d.drawImage(parts[2].getImage(), 0, 0, null);
+        g2d.translate(-staticWidth + width + 54, 0);
+    }
 }

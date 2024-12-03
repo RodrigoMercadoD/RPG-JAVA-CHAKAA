@@ -27,5 +27,43 @@ public interface UIConstants {
     Dimension BAR_LABEL = new Dimension(172, 51);
     EmptyBorder EMPTY_BORDER = new EmptyBorder(14, SIMPLE_MARGIN,
             SIMPLE_MARGIN, SIMPLE_MARGIN);
+    /**
+     * Ancho de la ventana
+    /**
+     * Alto de la parte superior de la ventana.
+     */
+    /**
+     * Alto de la parte media de la ventana.
+     */
+    /**
+     * Alto de la parte inferior de la ventana.
+     */
 
+    /**
+     * Margen simple.
+     */
+    int INTERNAL_FRAME_HEADER_HEIGHT = 77;
+    int STATUS_FRAME_WIDTH = 565;
+    int STATUS_FRAME_HEIGHT = 715;
+
+    /**
+     * Dimensión de la parte superior de la ventana.
+     */
+
+    /**
+     * Dimensión de la parte media de la ventana.
+     */
+
+    /**
+     * Dimensión de la parte inferior de la ventana.
+     */
+    Dimension START_WINDOW_DIMENSION = new Dimension(800, 600);
+
+    /**
+     *
+     */
+
+    Dimension MESSAGE_DIMENSION = new Dimension(1100, 287);
+    Dimension NEW_PLAYER_PANEL_DIMENSION = new Dimension(786, 250);
+    Dimension FILES_PANEL_DIMENSION = new Dimension(786, 563);
 }
